@@ -181,3 +181,5 @@ LOGGING = {
         },
     }
 }
+
+import nerzaveyka.setting_locals
