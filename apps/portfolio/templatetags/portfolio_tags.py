@@ -45,10 +45,11 @@ def slide_portfolio_fn(context, count):
     newData = []
 
     for item in data:
-        if item.gallery.all()[0].images.count() == 0:
-            continue
-        img = item.gallery.all()[0].images.all()[0]
-        newData.append({'data': item, 'img': img})
+        for gallery in item.gallery.all():
+            if gallery.active or gallery.images.count() == 0:
+                continue
+            img = gallery.images.all()[0]
+            newData.append({'data': item, 'img': img})
 
     return {
         'slide_article': newData
