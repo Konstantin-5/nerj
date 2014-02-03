@@ -16,6 +16,9 @@ class Manages():
             filter = filter.split(',')
             return Item.objects.filter(active=1, id__in=filter)
 
+    def get_list_item_slide(self, count):
+        return Item.objects.order_by('?').filter(active=1, gallery__active=0)[:count]
+
     def get_item_list(self, count):
         return Item.objects.order_by('?').filter(active=1)[:count]
 
